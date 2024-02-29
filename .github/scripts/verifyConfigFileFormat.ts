@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs';
-import path from 'path';
+const path = require('path');
 import { z } from 'zod';
 import yaml from 'js-yaml';
 
