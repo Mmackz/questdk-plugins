@@ -56,4 +56,4 @@ async function main() {
   await validateConfigsInDirectory(packagesDir);
 }
 
-main().catch(console.error);
+main();
