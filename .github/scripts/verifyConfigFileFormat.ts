@@ -31,8 +31,8 @@ async function validateConfigFile(filePath: string): Promise<void> {
     PluginConfigSchema.parse(config);
     console.log(`Config in ${filePath} is valid.`);
   } catch (error) {
-    console.error(`Validation error in ${filePath}:`, error);
-    throw error;
+    console.error(`Error validating config in ${filePath}:`, error);
+    process.exit(1);
   }
 }
 
