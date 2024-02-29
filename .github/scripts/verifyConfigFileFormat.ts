@@ -1,7 +1,9 @@
-import { promises as fs } from 'fs';
+const fs = require('fs/promises');
 const path = require('path');
-import { z } from 'zod';
+const zod = require('zod');
 import yaml from 'js-yaml';
+
+const { z } = zod;
 
 // Define your Zod schemas as before
 const ProjectConfigSchema = z.object({
