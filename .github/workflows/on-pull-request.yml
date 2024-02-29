@@ -24,10 +24,10 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetches all history for all branches and tags, consider using a specific number for performance
+          fetch-depth: 0
 
       - name: Fetch target branch
-        run: git fetch origin mmackz/test:mmackz/test
+        run: git fetch origin main:main
 
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
