@@ -29,8 +29,7 @@
     "turbo": "1.11.3",
     "typescript": "5.3.2",
     "vitest": "0.33.0",
-    "zod": "3.22.4",
-    "js-yaml": "4.1.0"
+    "zod": "3.22.4"
   },
   "dependencies": {
     "@rabbitholegg/questdk": "2.0.0-alpha.35",
@@ -40,7 +39,8 @@
   "pnpm": {
     "overrides": {
       "jsbi@>3.2.5": "3.2.5",
-      "viem@<2.7.9": "2.7.9"
+      "viem@<2.7.9": "2.7.9",
+      "js-yaml": "4.1.0"
     }
   },
   "packageManager": "pnpm@8.15.1"
