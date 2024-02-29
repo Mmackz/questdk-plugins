@@ -8,14 +8,14 @@ const { z } = zod;
 // Define your Zod schemas as before
 const ProjectConfigSchema = z.object({
   name: z.string(),
-  iconOption: z.string().optional(),
+  iconOption: z.string().url().optional(),
   appLink: z.string().url().optional(),
 });
 
 const TaskConfigSchema = z.object({
   name: z.string(),
   link: z.string().url(),
-  iconOption: z.string(), // Note: Adjusted to remove .url() validation for iconOption based on your schema
+  iconOption: z.string().url(),
   actionPluginId: z.string(),
 });
 
