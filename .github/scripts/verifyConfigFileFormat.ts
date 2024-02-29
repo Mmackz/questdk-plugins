@@ -38,12 +38,12 @@ async function getNewPackages(): Promise<string[]> {
   // Split the output into lines, trim whitespace, and filter out empty lines
   const changedFiles = stdout
     .split("\n")
-    .filter((path) => path.trim() !== "")
-    .map((path) => path.trim());
+    .filter((path: string) => path.trim() !== "")
+    .map((path: string) => path.trim());
 
   // Extract unique package directories
   const newPackageDirs = new Set<string>();
-  changedFiles.forEach((file) => {
+  changedFiles.forEach((file: string) => {
     // This regex matches 'packages/PackageName/' from the file path
     const match = file.match(/^(packages\/[^\/]+)\//);
     if (match) {
