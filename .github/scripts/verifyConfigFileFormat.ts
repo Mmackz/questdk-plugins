@@ -97,6 +97,7 @@ async function validateConfigsInDirectory(directory: string): Promise<void> {
     } else if (entry.isFile() && entry.name === "plugin-details.yml") {
       console.log(`Plugin details found!!, Validating ${fullPath}`);
       await validateConfigFile(fullPath);
+      console.log(`Plugin details for ${fullPath} are valid.`);
     }
   }
 }
