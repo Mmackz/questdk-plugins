@@ -52,6 +52,7 @@ async function validateConfigsInDirectory(directory: string): Promise<void> {
 
 async function main() {
   const packagesDir = path.join(__dirname, '..', 'packages'); // Adjust if necessary to point to your packages directory
+  console.log(`Validating plugin-config.yml files in ${packagesDir}`)
   await validateConfigsInDirectory(packagesDir);
 }
 
