@@ -34,6 +34,8 @@ async function getNewPackages(): Promise<string[]> {
   if (stderr) {
     throw new Error(`Error getting new packages: ${stderr}`);
   }
+
+  console.log("New packages found:", stdout);
   return stdout
     .split("\n")
     .filter((path: string) => path.trim() !== "")
