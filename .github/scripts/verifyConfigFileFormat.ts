@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 const path = require('path');
 const zod = require('zod');
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 
 const { z } = zod;
 
