@@ -42,9 +42,10 @@ async function validateConfigsInDirectory(directory: string): Promise<void> {
   for (const entry of entries) {
     const fullPath = path.join(directory, entry.name);
 
-    console.log(`Validating ${fullPath}`);
-
-    if (entry.isFile() && entry.name === 'plugin-details.yml') { // Ensure the file name matches
+    if (entry.isDirectory()) {
+      await validateConfigsInDirectory(fullPath);
+    } else if (entry.isFile() && entry.name === 'plugin-details.yml') { 
+      console.log(`Plugin details found!!, Validating ${fullPath}`);
       await validateConfigFile(fullPath);
     }
   }
@@ -52,7 +53,7 @@ async function validateConfigsInDirectory(directory: string): Promise<void> {
 
 async function main() {
   const packagesDir = path.join(__dirname, '../..', 'packages'); // Adjust if necessary to point to your packages directory
-  console.log(`Validating plugin-config.yml files in ${packagesDir}`)
+  console.log(`Validating plugin-details.yml files in ${packagesDir}`)
   await validateConfigsInDirectory(packagesDir);
 }
 
