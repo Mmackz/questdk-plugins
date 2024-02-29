@@ -29,7 +29,7 @@ const PluginConfigSchema = z.object({
 
 async function getNewPackages(): Promise<string[]> {
   const { stdout, stderr } = await execAsync(
-    "git diff --diff-filter=A --name-only main...HEAD packages/",
+    "git diff --diff-filter=A --name-only mmackz/test...HEAD packages/",
   );
   if (stderr) {
     throw new Error(`Error getting new packages: ${stderr}`);
