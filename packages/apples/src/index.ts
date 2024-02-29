@@ -1,6 +1,4 @@
-import {
-  type IActionPlugin,
-} from '@rabbitholegg/questdk'
+import { type IActionPlugin } from '@rabbitholegg/questdk'
 
 import {
   mint,
@@ -9,8 +7,8 @@ import {
 } from './Apples.js'
 
 export const Apples: IActionPlugin = {
-  pluginId: "apples",
+  pluginId: 'apples',
   getSupportedTokenAddresses,
   getSupportedChainIds,
-  mint, 
+  mint,
 }
