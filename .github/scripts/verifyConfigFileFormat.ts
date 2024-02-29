@@ -42,9 +42,9 @@ async function validateConfigsInDirectory(directory: string): Promise<void> {
   for (const entry of entries) {
     const fullPath = path.join(directory, entry.name);
 
-    if (entry.isDirectory()) {
-      await validateConfigsInDirectory(fullPath);
-    } else if (entry.isFile() && entry.name === 'plugin-config.yml') { // Ensure the file name matches
+    console.log(`Validating ${fullPath}`);
+
+    if (entry.isFile() && entry.name === 'plugin-details.yml') { // Ensure the file name matches
       await validateConfigFile(fullPath);
     }
   }
