@@ -35,15 +35,23 @@ async function getNewPackages(): Promise<string[]> {
     throw new Error(`Error getting new packages: ${stderr}`);
   }
 
-  console.log(stdout);
-  console.log(stdout
+  // Split the output into lines, trim whitespace, and filter out empty lines
+  const changedFiles = stdout
     .split("\n")
-    .filter((path: string) => path.trim() !== "")
-    .map((path: string) => path.trim()))
-  return stdout
-    .split("\n")
-    .filter((path: string) => path.trim() !== "")
-    .map((path: string) => path.trim());
+    .filter((path) => path.trim() !== "")
+    .map((path) => path.trim());
+
+  // Extract unique package directories
+  const newPackageDirs = new Set<string>();
+  changedFiles.forEach((file) => {
+    // This regex matches 'packages/PackageName/' from the file path
+    const match = file.match(/^(packages\/[^\/]+)\//);
+    if (match) {
+      newPackageDirs.add(match[1]);
+    }
+  });
+
+  return Array.from(newPackageDirs);
 }
 
 async function validateNewPackagesHaveDetails(
