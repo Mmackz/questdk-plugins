@@ -54,24 +54,28 @@ async function getNewPackages(): Promise<string[]> {
   return Array.from(newPackageDirs);
 }
 
-async function validateNewPackagesHaveDetails(
+async function validateNewPackagePaths(
   newPackagesPaths: string[],
-): Promise<void> {
-  const newPackageDirs = newPackagesPaths.filter((path) =>
+): Promise<string[]> {
+  const newPackageDirs = newPackagesPaths.filter((path: string) =>
     /packages\/[^\/]+\/?$/.test(path),
   ); // Adjust regex as needed
+
+  const validDetailsPaths: string[] = [];
 
   for (const packageDir of newPackageDirs) {
     const detailsPath = path.join(packageDir, "plugin-details.yml");
     try {
       await fs.access(detailsPath);
       console.log(`Valid: ${detailsPath} exists.`);
+      validDetailsPaths.push(detailsPath);
     } catch (error) {
       throw new Error(
         `Missing plugin-details.yml in new package: ${packageDir}`,
       );
     }
   }
+  return validDetailsPaths;
 }
 
 async function validateConfigFile(filePath: string): Promise<void> {
@@ -86,31 +90,14 @@ async function validateConfigFile(filePath: string): Promise<void> {
   }
 }
 
-async function validateConfigsInDirectory(directory: string): Promise<void> {
-  const entries = await fs.readdir(directory, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const fullPath = path.join(directory, entry.name);
-
-    if (entry.isDirectory()) {
-      await validateConfigsInDirectory(fullPath);
-    } else if (entry.isFile() && entry.name === "plugin-details.yml") {
-      console.log(`Plugin details found!!, Validating ${fullPath}`);
-      await validateConfigFile(fullPath);
-      console.log(`Plugin details for ${fullPath} are valid.`);
-    }
-  }
-}
-
 async function main() {
   const newPackagesPaths = await getNewPackages();
   if (newPackagesPaths.length) {
-    await validateNewPackagesHaveDetails(newPackagesPaths);
+    const paths = await validateNewPackagePaths(newPackagesPaths);
+    for (const path of paths) {
+      await validateConfigFile(path);
+    }
   }
-
-  const packagesDir = path.join(__dirname, "../..", "packages"); // Adjust if necessary to point to your packages directory
-  console.log(`Validating plugin-details.yml files in ${packagesDir}`);
-  await validateConfigsInDirectory(packagesDir);
 }
 
 main();
