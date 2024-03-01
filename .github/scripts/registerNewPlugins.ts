@@ -8,6 +8,7 @@ async function sendPluginDetailsToAPI(detailsPath: string): Promise<void> {
     const fileContents = await _fs.readFile(detailsPath, "utf8");
     const details = _yaml.load(fileContents);
 
+
     const { project, task } = details;
 
     // send details to staging API
