@@ -84,10 +84,13 @@ async function validateConfigFile(filePath: string): Promise<void> {
     const configFileContent = await fs.readFile(filePath, "utf8");
     const config = yaml.load(configFileContent);
     PluginConfigSchema.parse(config);
-    if (config.project.iconOption) {
-      await validateIcon(config.project.iconOption);
+    const { project, task } = config;
+
+    // validate each unique icon option url
+    const uniqueIconOptions = new Set([project.iconOption, task.iconOption].filter(Boolean));
+    for (const iconOption of uniqueIconOptions) {
+      await validateIcon(iconOption);
     }
-    await validateIcon(config.task.iconOption);
     console.log(`Config in ${filePath} is valid.`);
   } catch (error) {
     console.error(`Error validating config in ${filePath}:`, error);
