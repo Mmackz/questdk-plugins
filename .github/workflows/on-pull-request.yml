@@ -33,5 +33,4 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Run config file format verification script
-        if: github.event.pull_request.merge_commit_sha == null
         run: npx ts-node ./.github/scripts/verifyConfigFileFormat.ts
