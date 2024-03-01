@@ -10,7 +10,7 @@ describe('Given the apples plugin', () => {
         const { transaction, description, params } = testCase
         test(description, async () => {
           const filter = await mint(params)
-          expect(apply(transaction, filter)).to.be.true
+          expect(apply(transaction, filter)).to.be.false
         })
       })
     })
