@@ -100,7 +100,7 @@ async function validateConfigFile(filePath: string): Promise<void> {
 
 async function validateIcon(iconUrl: string) {
   const response = await axios.post(
-    "https://01e0-70-67-36-90.ngrok-free.app/plugins/validate-icon",
+    `${process.env.APP_URL}/plugins/validate-icon`,
     {
       iconOption: iconUrl,
     },
