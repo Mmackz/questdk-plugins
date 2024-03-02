@@ -10,27 +10,53 @@ async function sendPluginDetailsToAPI(detailsPath: string): Promise<void> {
 
   // send details to staging API
   const { data: stagingData } = await _axios.post(
-    `${process.env.STAGING_API_URL}/plugins/add-project`,
+    "https://api-staging.boost.xyz/plugins/add-project",
     {
       ...project,
       approvedForTerminal: true,
     },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.BOOST_API_TOKEN}`,
+      },
+    },
   );
-  await _axios.post(`${process.env.STAGING_API_URL}/plugins/add-task`, {
-    ...task,
-    projectId: stagingData.projectId,
-    approvedForTerminal: true,
-  });
+  await _axios.post(
+    "https://api-staging.boost.xyz/plugins/add-task",
+    {
+      ...task,
+      projectId: stagingData.projectId,
+      approvedForTerminal: true,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.BOOST_API_TOKEN}`,
+      },
+    },
+  );
 
   // send details to production API
   const { data } = await _axios.post(
-    `${process.env.PRODUCTION_API_URL}/plugins/add-project`,
+    "https://api.boost.xyz/plugins/add-project",
     project,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.BOOST_API_TOKEN}`,
+      },
+    },
   );
-  await _axios.post(`${process.env.PRODUCTION_API_URL}/plugins/add-task`, {
-    ...task,
-    projectId: data.projectId,
-  });
+  await _axios.post(
+    "https://api.boost.xyz/plugins/add-task",
+    {
+      ...task,
+      projectId: data.projectId,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.BOOST_API_TOKEN}`,
+      },
+    },
+  );
 
   console.log(`Successfully registered plugin details for ${project.name}`);
 }
@@ -38,7 +64,7 @@ async function sendPluginDetailsToAPI(detailsPath: string): Promise<void> {
 async function _main() {
   const newPackagesPaths = await _utils.getNewPackages();
   if (newPackagesPaths.length) {
-    const validDetailsPaths = await _utils.validatePluginDetailsPaths(
+    const validDetailsPaths = await _utils.validateNewPackagePaths(
       newPackagesPaths,
     );
     for (const detailsPath of validDetailsPaths) {
