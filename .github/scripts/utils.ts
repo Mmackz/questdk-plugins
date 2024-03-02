@@ -53,5 +53,5 @@ async function validatePluginDetailsPaths(
 
 module.exports = {
   getNewPackages,
-  validateNewPackagePaths,
+  validatePluginDetailsPaths,
 };
