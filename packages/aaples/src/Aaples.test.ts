@@ -5,8 +5,6 @@ import { bridge } from './Aaples'
 
 describe('Given the aaples plugin', () => {
   describe('When handling the bridge action', () => {
-
-
     describe('should pass filter with valid transactions', () => {
       passingTestCases.forEach((testCase) => {
         const { transaction, description, params } = testCase

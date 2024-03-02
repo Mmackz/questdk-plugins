@@ -1,6 +1,4 @@
-import {
-  type IActionPlugin,
-} from '@rabbitholegg/questdk'
+import { type IActionPlugin } from '@rabbitholegg/questdk'
 
 import {
   bridge,
@@ -9,8 +7,8 @@ import {
 } from './Aaples.js'
 
 export const Aaples: IActionPlugin = {
-  pluginId: "aaples",
+  pluginId: 'aaples',
   getSupportedTokenAddresses,
   getSupportedChainIds,
-  bridge, 
+  bridge,
 }

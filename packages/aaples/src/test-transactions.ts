@@ -25,5 +25,7 @@ export const passingTestCases = [
 ]
 
 export const failingTestCases = [
-  createTestCase(BRIDGE_TEST, 'when sourceChainId is not correct', { sourceChainId: 99 }),
+  createTestCase(BRIDGE_TEST, 'when sourceChainId is not correct', {
+    sourceChainId: 99,
+  }),
 ]
