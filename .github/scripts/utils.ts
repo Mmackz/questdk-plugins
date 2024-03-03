@@ -32,7 +32,7 @@ async function getNewPackages(): Promise<string[]> {
 
 async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
   const { stdout, stderr } = await execAsync(
-    "git diff --diff-filter=AM --name-only main...HEAD packages/",
+    "git diff --diff-filter=AM --name-only mmackz/test...HEAD packages/",
   );
   if (stderr) {
     throw new Error(`Error getting updated plugin details: ${stderr}`);
