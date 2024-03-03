@@ -15,7 +15,7 @@ Arbitrum uses different paths for ETH vs Tokens, and relies on precompiles when 
 
 For a given bridge action we generally have 4 types of transactions we want to ensure we're parsing:
 1. ETH from L1 to L2
-1. Tokens from L1 to L2
+1. Tokens from L1 to L2llllll
 1. ETH from L2 to L1
 1. Tokens from L2 to L1
 
