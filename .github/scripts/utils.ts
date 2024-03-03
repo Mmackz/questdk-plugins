@@ -8,7 +8,7 @@ const execAsync = promisify(exec);
 async function getNewPackages(): Promise<string[]> {
   // Get list of all directories in packages/ on main
   const { stdout: mainDirs } = await execAsync(
-    "git ls-tree -d --name-only main:packages/",
+    "git ls-tree -d --name-only mmackz/test:packages/",
   );
   const mainPackagesSet = new Set(
     mainDirs.split("\n").filter((name: string) => name.trim() !== ""),
@@ -32,7 +32,7 @@ async function getNewPackages(): Promise<string[]> {
 
 async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
   const { stdout, stderr } = await execAsync(
-    "git diff --diff-filter=AM --name-only main...HEAD packages/",
+    "git diff --diff-filter=AM --name-only mmackz/test...HEAD packages/",
   );
   if (stderr) {
     throw new Error(`Error getting updated plugin details: ${stderr}`);
