@@ -19,6 +19,8 @@ async function getNewPackages(): Promise<string[]> {
     .filter((path: string) => path.trim() !== "")
     .map((path: string) => path.trim());
 
+  console.log("Changed files:", changedFiles)
+
   // Extract unique package directories
   const newPackageDirs = new Set<string>();
   changedFiles.forEach((file: string) => {
