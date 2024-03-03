@@ -62,14 +62,10 @@ async function sendPluginDetailsToAPI(detailsPath: string): Promise<void> {
 }
 
 async function _main() {
-  const newPackagesPaths = await _utils.getNewPackages();
-  const updatedDetailsPaths = await _utils.getUpdatedPluginDetailsPaths();
-  const uniqueDetailsPaths = Array.from(
-    new Set([...newPackagesPaths, ...updatedDetailsPaths]),
-  );
-  if (uniqueDetailsPaths.length) {
+  const updatedDetailsPaths = await _utils.getUpdatedPluginDetailsPathsNew();
+  if (updatedDetailsPaths.length) {
     const validDetailsPaths = await _utils.validatePluginDetailsPaths(
-      uniqueDetailsPaths,
+      updatedDetailsPaths,
     );
     for (const detailsPath of validDetailsPaths) {
       await sendPluginDetailsToAPI(detailsPath);
