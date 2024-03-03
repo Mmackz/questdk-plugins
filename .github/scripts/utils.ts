@@ -32,6 +32,22 @@ async function getNewPackages(): Promise<string[]> {
   return Array.from(newPackageDirs);
 }
 
+async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
+  const { stdout, stderr } = await execAsync(
+    "git diff --diff-filter=M --name-only main...HEAD packages/",
+  );
+  if (stderr) {
+    throw new Error(`Error getting updated plugin details: ${stderr}`);
+  }
+
+  // Filter for changes specifically in plugin-details.yml files
+  const updatedDetailsFiles = stdout
+    .split("\n")
+    .filter((path: string) => path.trim().endsWith("plugin-details.yml"));
+
+  return updatedDetailsFiles;
+}
+
 async function validatePluginDetailsPaths(
   newPackagesPaths: string[],
 ): Promise<string[]> {
@@ -54,5 +70,6 @@ async function validatePluginDetailsPaths(
 
 module.exports = {
   getNewPackages,
+  getUpdatedPluginDetailsPaths,
   validatePluginDetailsPaths,
 };
