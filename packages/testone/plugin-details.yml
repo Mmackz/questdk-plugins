@@ -1,12 +1,12 @@
 project:
-  name: TestOne
-  iconOption: https://assets.coingecko.com/coins/images/6319/standard/usdc.png
-  appLink: https://testpr.org
+  name: TestOneII
+  iconOption: https://assets.coingecko.com/coins/images/5/standard/dogecoin.png?1696501409
+  appLink: https://testprii.org
 
 task:
   # action specific name, this is what will show as the default title for your boosts
-  name: Mint on TestOne
+  name: Mint on TestOneII
   # action specific link to your project. (ie: myapp.com/mint)
-  link: https://testpr.org/mint
-  iconOption: https://assets.coingecko.com/coins/images/6319/standard/usdc.png
+  link: https://testprii.org/mint
+  iconOption: https://assets.coingecko.com/coins/images/5/standard/dogecoin.png?1696501409
   actionPluginId: mint
