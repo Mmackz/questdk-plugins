@@ -27,7 +27,7 @@ jobs:
           fetch-depth: 0
 
       - name: Fetch target branch
-        run: git fetch origin mmackz/test:mmackz/test
+        run: git fetch origin
 
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
