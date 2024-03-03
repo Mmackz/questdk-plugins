@@ -7,7 +7,6 @@ const execAsync = promisify(exec);
 
 async function getNewPackages(): Promise<string[]> {
   // Get list of all directories in packages/ on main
-  const { stdout: mainDirs } = await execAsync(
     "git ls-tree -d --name-only mmackz/test:packages/",
   );
   const mainPackagesSet = new Set(
