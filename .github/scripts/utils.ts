@@ -36,6 +36,7 @@ async function validatePluginDetailsPaths(
   newPackagesPaths: string[],
 ): Promise<string[]> {
   const validDetailsPaths: string[] = [];
+
   for (const packageDir of newPackagesPaths) {
     const detailsPath = path.join(packageDir, "plugin-details.yml");
     try {
