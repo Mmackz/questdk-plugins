@@ -85,6 +85,7 @@ export const plugins: Record<string, IActionPlugin> = {
   [Llama.pluginId]: Llama,
   [Kote.pluginId]: Kote,
   [JOJO.pluginId]: JOJO,
+  [Test.pluginId]: Test,
 }
 
 export const getPlugin = (pluginId: string) => {
