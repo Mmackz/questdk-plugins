@@ -132,19 +132,6 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
 
-  packages/aaples:
-    dependencies:
-      '@rabbitholegg/questdk':
-        specifier: workspace:*
-        version: link:../../apps/questdk
-      '@rabbitholegg/questdk-plugin-utils':
-        specifier: workspace:*
-        version: link:../utils
-    devDependencies:
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
-
   packages/across:
     dependencies:
       '@rabbitholegg/questdk':
@@ -459,9 +446,6 @@ importers:
 
   packages/registry:
     dependencies:
-      '@rabbitholegg/questdk-plugin-aaples':
-        specifier: workspace:*
-        version: link:../aaples
       '@rabbitholegg/questdk-plugin-across':
         specifier: workspace:*
         version: link:../across
@@ -543,6 +527,9 @@ importers:
       '@rabbitholegg/questdk-plugin-tally':
         specifier: workspace:*
         version: link:../tally
+      '@rabbitholegg/questdk-plugin-testpr':
+        specifier: workspace:*
+        version: link:../testpr
       '@rabbitholegg/questdk-plugin-traderjoe':
         specifier: workspace:*
         version: link:../traderjoe
@@ -644,6 +631,19 @@ importers:
         version: link:../tsconfig
 
   packages/tally:
+    dependencies:
+      '@rabbitholegg/questdk':
+        specifier: workspace:*
+        version: link:../../apps/questdk
+      '@rabbitholegg/questdk-plugin-utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+
+  packages/testpr:
     dependencies:
       '@rabbitholegg/questdk':
         specifier: workspace:*
