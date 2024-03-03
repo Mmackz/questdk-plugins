@@ -6,32 +6,24 @@ const { promisify } = require("util");
 const execAsync = promisify(exec);
 
 async function getNewPackages(): Promise<string[]> {
-  const { stdout, stderr } = await execAsync(
-    "git diff --diff-filter=A --name-only main...HEAD packages/",
+  // Get list of all directories in packages/ on main
+  const { stdout: mainDirs } = await execAsync(
+    "git ls-tree -d --name-only main:packages/"
   );
-  if (stderr) {
-    throw new Error(`Error getting new packages: ${stderr}`);
-  }
+  const mainPackagesSet = new Set(mainDirs.split("\n").filter(name => name.trim() !== ""));
 
-  // Split the output into lines, trim whitespace, and filter out empty lines
-  const changedFiles = stdout
-    .split("\n")
-    .filter((path: string) => path.trim() !== "")
-    .map((path: string) => path.trim());
+  // Get list of all directories in packages/ in the current HEAD
+  const { stdout: headDirs } = await execAsync(
+    "git ls-tree -d --name-only HEAD:packages/"
+  );
+  const headPackages = headDirs.split("\n").filter(name => name.trim() !== "");
 
-  console.log("Changed files:", changedFiles)
+  // Filter out directories that are also present on main
+  const newPackageDirs = headPackages.filter(pkg => !mainPackagesSet.has(pkg));
 
-  // Extract unique package directories
-  const newPackageDirs = new Set<string>();
-  changedFiles.forEach((file: string) => {
-    // This regex matches 'packages/PackageName/' from the file path
-    const match = file.match(/^(packages\/[^\/]+)\//);
-    if (match) {
-      newPackageDirs.add(match[1]);
-    }
-  });
+  console.log("New package directories:", newPackageDirs);
 
-  return Array.from(newPackageDirs);
+  return newPackageDirs;
 }
 
 async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
