@@ -1,6 +1,6 @@
 project:
   name: Testingpr
-  iconOption: https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-cross-icon-png-image_925896.png
+  iconOption: https://png.pngtree.com/png-vector/20210522/ourmid/pngtree-apple-is-naturally-thirsty-and-healthy-png-image_3323218.jpg
   appLink: https://mint.org
 
 task:
@@ -8,5 +8,5 @@ task:
   name: Mint on Testingpr
   # action specific link to your project. (ie: myapp.com/mint)
   link: https://mint.org
-  iconOption: https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-cross-icon-png-image_925896.png
+  iconOption: https://png.pngtree.com/png-vector/20210522/ourmid/pngtree-apple-is-naturally-thirsty-and-healthy-png-image_3323218.jpg
   actionPluginId: mint
