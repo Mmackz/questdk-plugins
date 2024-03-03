@@ -27,8 +27,6 @@ async function getNewPackages(): Promise<string[]> {
     .filter((pkg: string) => !mainPackagesSet.has(pkg))
     .map((pkg: string) => path.join("packages", pkg));
 
-  console.log("New package directories:", newPackageDirs);
-
   return newPackageDirs;
 }
 
@@ -53,7 +51,7 @@ async function validatePluginDetailsPaths(
   newPackagesPaths: string[],
 ): Promise<string[]> {
   const validDetailsPaths: string[] = [];
-  console.log("New package paths:", newPackagesPaths);
+
   for (const packageDir of newPackagesPaths) {
     const detailsPath = path.join(packageDir, "plugin-details.yml");
     try {
