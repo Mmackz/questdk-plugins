@@ -1,6 +1,6 @@
 project:
   name: TestUniswap
-  iconOption: https://en.wikipedia.org/wiki/Instant_noodles#/media/File:Mama_instant_noodle_block.jpg
+  iconOption: https://assets.coingecko.com/coins/images/325/standard/Tether.png?1696501661
   appLink: https://mint.org
 
 task:
@@ -8,5 +8,5 @@ task:
   name: Mint on u
   # action specific link to your project. (ie: myapp.com/mint)
   link: https://mint.org
-  iconOption: https://en.wikipedia.org/wiki/Instant_noodles#/media/File:Mama_instant_noodle_block.jpg
+  iconOption: https://assets.coingecko.com/coins/images/325/standard/Tether.png?1696501661
   actionPluginId: mint
