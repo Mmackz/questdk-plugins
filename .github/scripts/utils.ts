@@ -32,23 +32,6 @@ async function getNewPackages(): Promise<string[]> {
 
 async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
   const { stdout, stderr } = await execAsync(
-    "git diff --diff-filter=AM --name-only mmackz/test...HEAD packages/",
-  );
-  if (stderr) {
-    throw new Error(`Error getting updated plugin details: ${stderr}`);
-  }
-
-  // Filter for changes specifically in plugin-details.yml files and format paths
-  const updatedDetailsPaths = stdout
-    .split("\n")
-    .filter((path: string) => path.trim().endsWith("plugin-details.yml"))
-    .map((path: string) => path.replace("/plugin-details.yml", ""));
-
-  return updatedDetailsPaths;
-}
-
-async function getPluginDetailsOnPushToMain(): Promise<string[]> {
-  const { stdout, stderr } = await execAsync(
     "git diff --name-only HEAD^ HEAD -- 'packages/*plugin-details.yml'",
   );
   if (stderr) {
@@ -83,6 +66,5 @@ async function validatePluginDetailsPaths(
 module.exports = {
   getNewPackages,
   getUpdatedPluginDetailsPaths,
-  getPluginDetailsOnPushToMain,
   validatePluginDetailsPaths,
 };
