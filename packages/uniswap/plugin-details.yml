@@ -1,0 +1,12 @@
+project:
+  name: TUniswap
+  iconOption: something
+  appLink: 
+
+task:
+  # action specific name, this is what will show as the default title for your boosts
+  name: Mint on u
+  # action specific link to your project. (ie: myapp.com/mint)
+  link: https://mint.org
+  iconOption: 
+  actionPluginId: mint
