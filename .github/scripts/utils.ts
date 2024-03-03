@@ -52,7 +52,7 @@ async function validatePluginDetailsPaths(
   newPackagesPaths: string[],
 ): Promise<string[]> {
   const validDetailsPaths: string[] = [];
-
+  console.log("New package paths:", newPackagesPaths);
   for (const packageDir of newPackagesPaths) {
     const detailsPath = path.join(packageDir, "plugin-details.yml");
     try {
@@ -61,7 +61,7 @@ async function validatePluginDetailsPaths(
       validDetailsPaths.push(detailsPath);
     } catch (error) {
       throw new Error(
-        `Missing plugin-details.yml in new package: ${packageDir}`,
+        `Missing plugin-details.yml in package: ${packageDir}`,
       );
     }
   }
