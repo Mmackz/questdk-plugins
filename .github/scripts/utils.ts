@@ -47,6 +47,24 @@ async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
   return updatedDetailsPaths;
 }
 
+async function getUpdatedPluginDetailsPathsNew(): Promise<string[]> {
+  // Assuming 'origin/mmackz/test' is the branch you're comparing against its immediate ancestor
+  const { stdout, stderr } = await execAsync(
+    "git diff --name-only HEAD^ HEAD -- 'packages/*plugin-details.yml'",
+  );
+  if (stderr) {
+    throw new Error(`Error getting updated plugin details: ${stderr}`);
+  }
+  console.log(stdout);
+  const updatedDetailsPaths = stdout
+    .split("\n")
+    .filter((path: string) => path.trim() !== "" && path.includes("plugin-details.yml"))
+    .map((path: string) => path.replace("/plugin-details.yml", "").trim());
+
+  return updatedDetailsPaths;
+}
+
+
 async function validatePluginDetailsPaths(
   newPackagesPaths: string[],
 ): Promise<string[]> {
@@ -68,5 +86,6 @@ async function validatePluginDetailsPaths(
 module.exports = {
   getNewPackages,
   getUpdatedPluginDetailsPaths,
+  getUpdatedPluginDetailsPathsNew,
   validatePluginDetailsPaths,
 };
