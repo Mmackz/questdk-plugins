@@ -55,11 +55,11 @@ async function getUpdatedPluginDetailsPathsNew(): Promise<string[]> {
   if (stderr) {
     throw new Error(`Error getting updated plugin details: ${stderr}`);
   }
-
+  console.log(stdout);
   const updatedDetailsPaths = stdout
     .split("\n")
     .filter((path: string) => path.trim() !== "" && path.includes("plugin-details.yml"))
-    .map((path: string) => path.trim());
+    .map((path: string) => path.replace("/plugin-details.yml", "").trim());
 
   return updatedDetailsPaths;
 }
