@@ -61,7 +61,7 @@ async function validatePluginDetailsPaths(
       validDetailsPaths.push(detailsPath);
     } catch (error) {
       throw new Error(
-        `Missing plugin-details.yml in new package: ${packageDir}`,
+        `Missing plugin-details.yml in package: ${packageDir}`,
       );
     }
   }
