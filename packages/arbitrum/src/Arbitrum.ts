@@ -18,7 +18,7 @@ import {
   OUTBOUND_TRANSFER_L2_TO_L1,
   OUTBOUND_TRANSFER_L1_TO_L2,
 } from './abi'
-
+// changes
 export const bridge = async (bridge: BridgeActionParams) => {
   // This is the information we'll use to compose the Transaction object
   const {
