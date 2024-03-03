@@ -40,12 +40,13 @@ async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
     throw new Error(`Error getting updated plugin details: ${stderr}`);
   }
 
-  // Filter for changes specifically in plugin-details.yml files
-  const updatedDetailsFiles = stdout
+  // Filter for changes specifically in plugin-details.yml files and format paths
+  const updatedDetailsPaths = stdout
     .split("\n")
-    .filter((path: string) => path.trim().endsWith("plugin-details.yml"));
+    .filter((path: string) => path.trim().endsWith("plugin-details.yml"))
+    .map((path: string) => path.replace("/plugin-details.yml", ""));
 
-  return updatedDetailsFiles;
+  return updatedDetailsPaths;
 }
 
 async function validatePluginDetailsPaths(
@@ -60,9 +61,7 @@ async function validatePluginDetailsPaths(
       console.log(`Valid: ${detailsPath} exists.`);
       validDetailsPaths.push(detailsPath);
     } catch (error) {
-      throw new Error(
-        `Missing plugin-details.yml in package: ${packageDir}`,
-      );
+      throw new Error(`Missing plugin-details.yml in package: ${packageDir}`);
     }
   }
   return validDetailsPaths;
