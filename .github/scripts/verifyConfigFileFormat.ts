@@ -61,7 +61,6 @@ async function validateIcon(iconUrl: string) {
 async function main() {
   const newPackagesPaths = await utils.getNewPackages();
   const updatedDetailsPaths = await utils.getUpdatedPluginDetailsPaths();
-  console.log("New packages:", newPackagesPaths);
   const uniqueDetailsPaths = Array.from(
     new Set([...newPackagesPaths, ...updatedDetailsPaths]),
   );
