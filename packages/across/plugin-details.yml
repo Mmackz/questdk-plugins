@@ -1,0 +1,12 @@
+project:
+  name: TestAcross
+  iconOption: https://assets.coingecko.com/coins/images/28161/standard/across-200x200.png?1696527165
+  appLink: https://across.org
+
+task:
+  # action specific name, this is what will show as the default title for your boosts
+  name: Bridge on TestAcross
+  # action specific link to your project. (ie: myapp.com/mint)
+  link: https://across.org/bridge
+  iconOption: https://assets.coingecko.com/coins/images/28161/standard/across-200x200.png?1696527165
+  actionPluginId: mint
