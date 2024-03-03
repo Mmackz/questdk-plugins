@@ -1,11 +1,11 @@
-import { type BurnActionParams } from '@rabbitholegg/questdk'
+import { type MintActionParams } from '@rabbitholegg/questdk'
 import {
   createTestCase,
   type TestParams,
 } from '@rabbitholegg/questdk-plugin-utils'
 
 // values are placeholders, replace with actual values from your test transaction
-export const BURN_TEST: TestParams<BurnActionParams> = {
+export const MINT_TEST: TestParams<MintActionParams> = {
   transaction: {
     chainId: 1,
     from: '0x0',
@@ -15,17 +15,15 @@ export const BURN_TEST: TestParams<BurnActionParams> = {
     value: '0',
   },
   params: {
-    chainId: 1,
+    chainId: 0,
     contractAddress: '0x0',
-    tokenId: 0,
-    amount: '0',
   },
 }
 
 export const passingTestCases = [
-  createTestCase(BURN_TEST, 'this is a demo test'),
+  createTestCase(MINT_TEST, 'this is a demo test'),
 ]
 
 export const failingTestCases = [
-  createTestCase(BURN_TEST, 'when chainId is not correct', { chainId: 99 }),
+  createTestCase(MINT_TEST, 'when chainId is not correct', { chainId: 99 }),
 ]

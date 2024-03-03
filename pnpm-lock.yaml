@@ -527,9 +527,9 @@ importers:
       '@rabbitholegg/questdk-plugin-tally':
         specifier: workspace:*
         version: link:../tally
-      '@rabbitholegg/questdk-plugin-testpr':
+      '@rabbitholegg/questdk-plugin-testone':
         specifier: workspace:*
-        version: link:../testpr
+        version: link:../testone
       '@rabbitholegg/questdk-plugin-traderjoe':
         specifier: workspace:*
         version: link:../traderjoe
@@ -643,7 +643,7 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
 
-  packages/testpr:
+  packages/testone:
     dependencies:
       '@rabbitholegg/questdk':
         specifier: workspace:*

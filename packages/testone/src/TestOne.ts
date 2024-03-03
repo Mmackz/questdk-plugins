@@ -1,6 +1,6 @@
 import {
   type TransactionFilter,
-  type BurnActionParams,
+  type MintActionParams,
   compressJson,
 } from '@rabbitholegg/questdk'
 import { type Address } from 'viem'
@@ -15,8 +15,8 @@ import { Chains } from '@rabbitholegg/questdk-plugin-utils'
  * the action params you wish to use.
  */
 
-export const burn = async (
-  _params: BurnActionParams,
+export const mint = async (
+  _params: MintActionParams,
 ): Promise<TransactionFilter> => {
   // the ActionParams for this function are populated in the Boost Manager when the actual Boost is launched.
 
@@ -42,5 +42,5 @@ export const getSupportedTokenAddresses = async (
 
 export const getSupportedChainIds = async (): Promise<number[]> => {
   // This should return all of the ChainIds that are supported by the Project we're integrating
-  return [Chains.ETHEREUM]
+  return [Chains.OPTIMISM]
 }

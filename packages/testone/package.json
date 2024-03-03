@@ -1,5 +1,5 @@
 {
-  "name": "@rabbitholegg/questdk-plugin-testpr",
+  "name": "@rabbitholegg/questdk-plugin-testone",
   "private": true,
   "version": "1.0.0-alpha.0",
   "type": "module",
@@ -10,7 +10,7 @@
   },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "description": "Plugin for testpr",
+  "description": "Plugin for TestOne",
   "scripts": {
     "bench": "vitest bench",
     "bench:ci": "CI=true vitest bench",

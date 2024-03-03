@@ -1,14 +1,14 @@
 import { type IActionPlugin } from '@rabbitholegg/questdk'
 
 import {
-  burn,
+  mint,
   getSupportedChainIds,
   getSupportedTokenAddresses,
-} from './Testpr.js'
+} from './TestOne.js'
 
-export const Testpr: IActionPlugin = {
-  pluginId: 'testpr',
+export const TestOne: IActionPlugin = {
+  pluginId: 'testone',
   getSupportedTokenAddresses,
   getSupportedChainIds,
-  burn,
+  mint,
 }
