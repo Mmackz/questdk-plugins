@@ -1,7 +1,7 @@
 project:
   name: TestAcross
   iconOption: https://assets.coingecko.com/coins/images/28161/standard/across-200x200.png?1696527165
-  appLink: https://across.org
+  appLink: https://across.com
 
 task:
   # action specific name, this is what will show as the default title for your boosts
