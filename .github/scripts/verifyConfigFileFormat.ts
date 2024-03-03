@@ -66,6 +66,7 @@ async function main() {
   );
   if (uniqueDetailsPaths.length) {
     const paths = await utils.validatePluginDetailsPaths(uniqueDetailsPaths);
+    console.log(paths)
     for (const path of paths) {
       await validateConfigFile(path);
     }
