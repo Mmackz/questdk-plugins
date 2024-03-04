@@ -2,7 +2,7 @@ project:
   name: {{capitalize projectName}}
   iconOption: {{{details.iconUrl}}}
   appLink: {{{details.projectUrl}}}
-
+  
 tasks:
     # action specific name, this is what will show as the default title for your boosts
   - name: {{capitalize actionType}} on {{capitalize projectName}}
