@@ -31,6 +31,7 @@ async function getNewPackages(): Promise<string[]> {
 }
 
 async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
+  // compares the current HEAD with the previous commit to get the updated plugin details
   const { stdout, stderr } = await execAsync(
     "git diff --name-only HEAD^ HEAD -- 'packages/*plugin-details.yml'",
   );
