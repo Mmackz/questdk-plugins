@@ -157,6 +157,19 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
 
+  packages/atest:
+    dependencies:
+      '@rabbitholegg/questdk':
+        specifier: workspace:*
+        version: link:../../apps/questdk
+      '@rabbitholegg/questdk-plugin-utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+
   packages/balancer:
     dependencies:
       '@rabbitholegg/questdk':
@@ -468,6 +481,9 @@ importers:
       '@rabbitholegg/questdk-plugin-arbitrum':
         specifier: workspace:*
         version: link:../arbitrum
+      '@rabbitholegg/questdk-plugin-atest':
+        specifier: workspace:*
+        version: link:../atest
       '@rabbitholegg/questdk-plugin-balancer':
         specifier: workspace:*
         version: link:../balancer
