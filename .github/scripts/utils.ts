@@ -8,7 +8,7 @@ const execAsync = promisify(exec)
 async function getNewPackages(): Promise<string[]> {
   // Get list of all directories in packages/ on main
   const { stdout: mainDirs } = await execAsync(
-    'git ls-tree -d --name-only main:packages/',
+    'git ls-tree -d --name-only main:packages/plugins/',
   )
   const mainPackagesSet = new Set(
     mainDirs.split('\n').filter((name: string) => name.trim() !== ''),
@@ -16,7 +16,7 @@ async function getNewPackages(): Promise<string[]> {
 
   // Get list of all directories in packages/ in the current HEAD
   const { stdout: headDirs } = await execAsync(
-    'git ls-tree -d --name-only HEAD:packages/',
+    'git ls-tree -d --name-only HEAD:packages/plugins/',
   )
   const headPackages = headDirs
     .split('\n')
@@ -25,7 +25,7 @@ async function getNewPackages(): Promise<string[]> {
   // Filter out directories that are also present on main
   const newPackageDirs = headPackages
     .filter((pkg: string) => !mainPackagesSet.has(pkg))
-    .map((pkg: string) => path.join('packages', pkg))
+    .map((pkg: string) => path.join('packages/plugins', pkg))
 
   return newPackageDirs
 }
@@ -33,7 +33,7 @@ async function getNewPackages(): Promise<string[]> {
 async function getUpdatedPluginDetailsPaths(): Promise<string[]> {
   // compares the current HEAD with the previous commit to get the updated plugin details
   const { stdout, stderr } = await execAsync(
-    "git diff --name-only HEAD^ HEAD -- 'packages/*plugin-details.yml'",
+    "git diff --name-only HEAD^ HEAD -- 'packages/plugins/*plugin-details.yml'",
   )
   if (stderr) {
     throw new Error(`Error getting updated plugin details: ${stderr}`)
