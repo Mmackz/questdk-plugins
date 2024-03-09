@@ -31,7 +31,6 @@ import { Vela } from '@rabbitholegg/questdk-plugin-vela'
 import { WooFi } from '@rabbitholegg/questdk-plugin-woofi'
 import { Zora } from '@rabbitholegg/questdk-plugin-zora'
 import { JOJO } from '@rabbitholegg/questdk-plugin-jojo'
-import { Appa } from '@rabbitholegg/questdk-plugin-appa'
 import { ENTRYPOINT } from './contract-addresses'
 import {
   type IntentParams,
@@ -86,7 +85,6 @@ export const plugins: Record<string, IActionPlugin> = {
   [Llama.pluginId]: Llama,
   [Kote.pluginId]: Kote,
   [JOJO.pluginId]: JOJO,
-  [Appa.pluginId]: Appa,
 }
 
 export const getPlugin = (pluginId: string) => {
