@@ -1,0 +1,12 @@
+project:
+  name: Aaples
+  iconOption: https://assets.coingecko.com/coins/images/19785/standard/acatxTm8_400x400.jpg?1696519207
+  appLink: https://testpr.com
+  
+tasks:
+    # action specific name, this is what will show as the default title for your boosts
+  - name: Bridge on Aaples
+    # action specific link to your project. (ie: myapp.com/bridge)
+    link: https://testpr.com
+    iconOption: https://assets.coingecko.com/coins/images/19785/standard/acatxTm8_400x400.jpg?1696519207
+    actionPluginId: bridge
