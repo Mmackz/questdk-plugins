@@ -28,7 +28,7 @@ export async function createPlugin(params: BuilderParams) {
   console.log()
   console.log(
     'View your new plugin todo list in the README, located at',
-    cyan(`packages/${params.projectName}/README.md`),
+    cyan(`packages/plugins/${params.projectName}/README.md`),
   )
 
   console.log('\n\n\n')
@@ -95,7 +95,7 @@ async function copyDirectory(params: BuilderParams) {
   // get the target directory location
   const dest = path.join(
     __dirname,
-    `../../../packages/${params.projectName.toLowerCase()}`,
+    `../../../packages/plugins/${params.projectName.toLowerCase()}`,
   )
   // if there is already a directory with the name throw an error
   if (await fs.pathExists(dest)) {
@@ -152,7 +152,7 @@ async function replaceProjectName(params: BuilderParams) {
   // get the target directory location
   const dest = path.join(
     __dirname,
-    `../../../packages/${params.projectName.toLowerCase()}`,
+    `../../../packages/plugins/${params.projectName.toLowerCase()}`,
   )
 
   // replace the project name in the package.json
@@ -200,7 +200,7 @@ async function replaceFileNames(params: BuilderParams) {
   // get the target directory location
   const dest = path.join(
     __dirname,
-    `../../../packages/${params.projectName.toLowerCase()}`,
+    `../../../packages/plugins/${params.projectName.toLowerCase()}`,
   )
 
   //rename index.ts
@@ -247,7 +247,7 @@ async function setActionNames(params: BuilderParams) {
   // get the target directory location
   const dest = path.join(
     __dirname,
-    `../../../packages/${params.projectName.toLowerCase()}`,
+    `../../../packages/plugins/${params.projectName.toLowerCase()}`,
   )
 
   //replace the action names in the index
@@ -284,7 +284,7 @@ async function setActionNames(params: BuilderParams) {
 export async function updateRegistry(params: BuilderParams) {
   const filePath = path.join(
     __dirname,
-    '../../../packages/',
+    '../../../packages/plugins/',
     'registry',
     'src/index.ts',
   )
@@ -316,7 +316,7 @@ export async function updateRegistry(params: BuilderParams) {
   // add plugin to registry package.json
   const packagefilePath = path.join(
     __dirname,
-    '../../../packages/',
+    '../../../packages/plugins/',
     'registry',
     'package.json',
   )
