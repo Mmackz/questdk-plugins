@@ -1,6 +1,7 @@
 {
-  "name": "@rabbitholegg/questdk-plugin-registry",
-  "version": "1.0.0-alpha.81",
+  "name": "@rabbitholegg/questdk-plugin-aerodrome",
+  "private": false,
+  "version": "1.0.0-alpha.0",
   "type": "module",
   "exports": {
     "require": "./dist/cjs/index.js",
@@ -9,7 +10,7 @@
   },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "description": "",
+  "description": "Plugin for Aerodrome",
   "scripts": {
     "bench": "vitest bench",
     "bench:ci": "CI=true vitest bench",
@@ -32,12 +33,10 @@
   "types": "./dist/types/index.d.ts",
   "typings": "./dist/types/index.d.ts",
   "devDependencies": {
-    "tsconfig": "workspace:*",
-    "@rabbitholegg/questdk-plugin-utils": "workspace:*"
+    "tsconfig": "workspace:*"
   },
   "dependencies": {
-    "@rabbitholegg/questdk-plugin-balancer": "workspace:*",
-    "@rabbitholegg/questdk-plugin-kote": "workspace:*",
-    "@rabbitholegg/questdk-plugin-aerodrome": "workspace:*"
+    "@rabbitholegg/questdk-plugin-utils": "workspace:*",
+    "@rabbitholegg/questdk": "workspace:*"
   }
 }

@@ -1,5 +1,6 @@
 import { Balancer } from '@rabbitholegg/questdk-plugin-balancer'
 import { Kote } from '@rabbitholegg/questdk-plugin-kote'
+import { Aerodrome } from '@rabbitholegg/questdk-plugin-aerodrome'
 import { ENTRYPOINT } from './contract-addresses'
 import {
   type IntentParams,
@@ -23,6 +24,7 @@ import type { Address, PublicClient } from 'viem'
 export const plugins: Record<string, IActionPlugin> = {
   [Balancer.pluginId]: Balancer,
   [Kote.pluginId]: Kote,
+  [Aerodrome.pluginId]: Aerodrome,
 }
 
 export const getPlugin = (pluginId: string) => {
