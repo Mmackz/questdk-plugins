@@ -4,7 +4,7 @@ import {
   compressJson,
 } from '@rabbitholegg/questdk'
 import { type Address, zeroAddress } from 'viem'
-import { Chains } from '@rabbitholegg/questdk-plugin-utils'
+import { Chains, CHAIN_TO_TOKENS } from '@rabbitholegg/questdk-plugin-utils'
 import { 
   AERODROME_ROUTER,
   ETH_FOR_TOKENS_FRAGMENTS, 
@@ -71,7 +71,7 @@ export const getSupportedTokenAddresses = async (
   _chainId: number,
 ): Promise<Address[]> => {
   // Given a specific chain we would expect this function to return a list of supported token addresses
-  return []
+  return CHAIN_TO_TOKENS[_chainId] ?? []
 }
 
 export const getSupportedChainIds = async (): Promise<number[]> => {
