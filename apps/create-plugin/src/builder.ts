@@ -65,17 +65,20 @@ function registerHelpers() {
   Handlebars.registerHelper('eq', function (this: string, arg1, arg2, options) {
     return arg1 === arg2 ? options.fn(this) : options.inverse(this)
   })
-  Handlebars.registerHelper('hasAmountKey', function(this: string, tx, options) {
-    // Logic to determine if any tx.params keys start with "amount"
-    for (const transaction of tx) {
-      for (const key of Object.keys(transaction.params)) {
-        if (key.startsWith("amount")) {
-          return options.fn(this)
+  Handlebars.registerHelper(
+    'hasAmountKey',
+    function (this: string, tx, options) {
+      // Logic to determine if any tx.params keys start with "amount"
+      for (const transaction of tx) {
+        for (const key of Object.keys(transaction.params)) {
+          if (key.startsWith('amount')) {
+            return options.fn(this)
+          }
         }
       }
-    }
-    return options.inverse(this)
-  })
+      return options.inverse(this)
+    },
+  )
 }
 
 /**
@@ -175,6 +178,12 @@ async function replaceProjectName(params: BuilderParams) {
   const indexTemplate = Handlebars.compile(index)
   await fs.writeFile(indexPath, indexTemplate(params))
   console.log(`\t ${arrow} Updated file ${cyan('index.ts')}!`)
+
+  const configPath = path.join(dest, 'plugin-details.yml')
+  const config = await fs.readFile(configPath, 'utf8')
+  const configTemplate = Handlebars.compile(config)
+  await fs.writeFile(configPath, configTemplate(params))
+  console.log(`\t ${arrow} Updated file ${cyan('plugin-details.yml')}!`)
 }
 
 /**
@@ -275,7 +284,7 @@ async function setActionNames(params: BuilderParams) {
 export async function updateRegistry(params: BuilderParams) {
   const filePath = path.join(
     __dirname,
-    '../../../packages/plugins/',
+    '../../../packages/',
     'registry',
     'src/index.ts',
   )
@@ -307,7 +316,7 @@ export async function updateRegistry(params: BuilderParams) {
   // add plugin to registry package.json
   const packagefilePath = path.join(
     __dirname,
-    '../../../packages/plugins/',
+    '../../../packages/',
     'registry',
     'package.json',
   )
