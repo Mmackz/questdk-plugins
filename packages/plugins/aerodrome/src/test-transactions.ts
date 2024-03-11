@@ -63,9 +63,9 @@ export const SWAP_TEST_2: TestParams<SwapActionParams> = {
 }
 
 export const passingTestCases = [
-  createTestCase(SWAP_TEST_0, 'when 3'),
-  createTestCase(SWAP_TEST_1, 'when 0.001'),
-  createTestCase(SWAP_TEST_2, 'when 5'),
+  createTestCase(SWAP_TEST_0, 'when using swapExactETHForTokens'),
+  createTestCase(SWAP_TEST_1, 'when using swapExactTokensForETH'),
+  createTestCase(SWAP_TEST_2, 'when using swapExactTokensForTokens'),
 ]
 
 export const failingTestCases = [
