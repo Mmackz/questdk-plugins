@@ -135,40 +135,40 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
 
-  packages/balancer:
+  packages/plugins/balancer:
     dependencies:
       '@rabbitholegg/questdk':
         specifier: workspace:*
-        version: link:../../apps/questdk
+        version: link:../../../apps/questdk
       '@rabbitholegg/questdk-plugin-utils':
         specifier: workspace:*
-        version: link:../utils
+        version: link:../../utils
     devDependencies:
       tsconfig:
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../tsconfig
 
-  packages/kote:
+  packages/plugins/kote:
     dependencies:
       '@rabbitholegg/questdk':
         specifier: workspace:*
-        version: link:../../apps/questdk
+        version: link:../../../apps/questdk
       '@rabbitholegg/questdk-plugin-utils':
         specifier: workspace:*
-        version: link:../utils
+        version: link:../../utils
     devDependencies:
       tsconfig:
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../../tsconfig
 
   packages/registry:
     dependencies:
       '@rabbitholegg/questdk-plugin-balancer':
         specifier: workspace:*
-        version: link:../balancer
+        version: link:../plugins/balancer
       '@rabbitholegg/questdk-plugin-kote':
         specifier: workspace:*
-        version: link:../kote
+        version: link:../plugins/kote
     devDependencies:
       '@rabbitholegg/questdk-plugin-utils':
         specifier: workspace:*
