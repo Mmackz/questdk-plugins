@@ -31,7 +31,7 @@ describe('Given the aerodrome plugin', () => {
         // Check the input property is the correct type and has a valid $abi operator
         expect(filter.input).toBeTypeOf('object')
         expect(
-          ['$abi', '$abiParams', '$abiAbstract'].some((prop) =>
+          ['$abi', '$abiParams', '$abiAbstract', '$or', '$and'].some((prop) =>
             Object.hasOwnProperty.call(filter.input, prop),
           ),
         ).to.be.true
