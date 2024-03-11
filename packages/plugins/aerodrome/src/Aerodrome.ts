@@ -5,17 +5,16 @@ import {
 } from '@rabbitholegg/questdk'
 import { type Address, zeroAddress } from 'viem'
 import { Chains, CHAIN_TO_TOKENS } from '@rabbitholegg/questdk-plugin-utils'
-import { 
+import {
   AERODROME_ROUTER,
-  ETH_FOR_TOKENS_FRAGMENTS, 
-  TOKENS_FOR_ETH_FRAGMENTS, 
-  TOKENS_FOR_TOKENS_FRAGMENTS, 
+  ETH_FOR_TOKENS_FRAGMENTS,
+  TOKENS_FOR_ETH_FRAGMENTS,
+  TOKENS_FOR_TOKENS_FRAGMENTS,
 } from './constants'
 
 export const swap = async (
   _params: SwapActionParams,
 ): Promise<TransactionFilter> => {
-
   const { chainId, tokenIn, tokenOut, amountIn, amountOut, recipient } = _params
 
   return compressJson({
@@ -30,9 +29,11 @@ export const swap = async (
           amountOutMin: amountOut,
           routes: {
             $and: [
-              {$first: { from: '0x4200000000000000000000000000000000000006' }},
-              {$last: { to: tokenOut }},
-            ]
+              {
+                $first: { from: '0x4200000000000000000000000000000000000006' },
+              },
+              { $last: { to: tokenOut } },
+            ],
           },
           to: recipient,
         },
@@ -43,9 +44,9 @@ export const swap = async (
           amountOutMin: amountOut,
           routes: {
             $and: [
-              {$first: { from: tokenIn }},
-              {$last: { to: '0x4200000000000000000000000000000000000006' }},
-            ]
+              { $first: { from: tokenIn } },
+              { $last: { to: '0x4200000000000000000000000000000000000006' } },
+            ],
           },
           to: recipient,
         },
@@ -55,15 +56,12 @@ export const swap = async (
           amountIn: amountIn,
           amountOutMin: amountOut,
           routes: {
-            $and: [
-              {$first: { from: tokenIn }},
-              {$last: { to: tokenOut }},
-            ]
+            $and: [{ $first: { from: tokenIn } }, { $last: { to: tokenOut } }],
           },
           to: recipient,
         },
-      ]
-    }, 
+      ],
+    },
   })
 }
 
