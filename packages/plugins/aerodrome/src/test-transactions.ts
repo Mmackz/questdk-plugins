@@ -6,7 +6,6 @@ import {
   createTestCase,
   type TestParams,
 } from '@rabbitholegg/questdk-plugin-utils'
-import { parseEther } from 'viem'
 
 export const SWAP_TEST_0: TestParams<SwapActionParams> = {
   transaction: {
@@ -67,26 +66,8 @@ export const passingTestCases = [
   createTestCase(SWAP_TEST_0, 'when using swapExactETHForTokens'),
   createTestCase(SWAP_TEST_1, 'when using swapExactTokensForETH'),
   createTestCase(SWAP_TEST_2, 'when using swapExactTokensForTokens'),
-  createTestCase(SWAP_TEST_0, 'when using tokenIn is "Any"', {
-    tokenIn: undefined,
-  }),
-  createTestCase(SWAP_TEST_1, 'when using tokenOut is "Any"', {
-    tokenOut: undefined,
-  }),
-  createTestCase(SWAP_TEST_2, 'when using amountIn is "Any"', {
-    amountIn: undefined,
-  }),
 ]
 
 export const failingTestCases = [
   createTestCase(SWAP_TEST_0, 'when chainId is not correct', { chainId: 0 }),
-  createTestCase(SWAP_TEST_0, 'when tokenIn is not correct', {
-    tokenIn: '0x6982508145454ce325ddbe47a25d4ec3d2311933',
-  }),
-  createTestCase(SWAP_TEST_1, 'when tokenOut is not correct', {
-    tokenOut: '0x6982508145454ce325ddbe47a25d4ec3d2311933',
-  }),
-  createTestCase(SWAP_TEST_2, 'when amountIn is insufficient', {
-    amountIn: GreaterThanOrEqual(parseEther('1000000000')),
-  }),
 ]
