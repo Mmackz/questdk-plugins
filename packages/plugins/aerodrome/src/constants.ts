@@ -620,7 +620,7 @@ const ROUTER_ABI = [
 
 export const ETH_FOR_TOKENS_FRAGMENTS = ROUTER_ABI.filter(({ name }) =>
   [
-    'swapExactEthForTokens',
+    'swapExactETHForTokens',
     'swapExactETHForTokensSupportingFeeOnTransferTokens',
   ].includes(name as string),
 )

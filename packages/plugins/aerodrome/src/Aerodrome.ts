@@ -3,33 +3,41 @@ import {
   type SwapActionParams,
   compressJson,
 } from '@rabbitholegg/questdk'
-import { type Address } from 'viem'
+import { type Address, zeroAddress } from 'viem'
 import { Chains } from '@rabbitholegg/questdk-plugin-utils'
-
-/*
- * Function templates for handling various blockchain action types.
- * It's adaptable for actions defined in ActionParams: Bridge, Swap, Stake, Mint, Delegate, Quest, Etc.
- * Duplicate and customize for each specific action type.
- * If you wish to use a different action other than swap, import one of the ActionParams types
- * from @rabbitholegg/questdk (ie: SwapActionParams) and change the function below to use
- * the action params you wish to use.
- */
+import { 
+  AERODROME_ROUTER,
+  ETH_FOR_TOKENS_FRAGMENTS, 
+  TOKENS_FOR_ETH_FRAGMENTS, 
+  TOKENS_FOR_TOKENS_FRAGMENTS, 
+} from './constants'
 
 export const swap = async (
   _params: SwapActionParams,
 ): Promise<TransactionFilter> => {
-  // the ActionParams for this function are populated in the Boost Manager when the actual Boost is launched.
 
-  // In this function you should load the ABI, and translate any ActionParams into the input object defined below
-  // which should match the parameter names in the transaction
+  const { chainId, tokenIn, tokenOut, amountIn, amountOut, recipient } = _params
 
-  // You can also use the boostdk filter system to support operators on parameters, for example, greater than
-
-  // We always want to return a compressed JSON object which we'll transform into a TransactionFilter
   return compressJson({
-    chainId: '0x0',
-    to: '0x0', // The to field is the address of the contract we're interacting with
-    input: {}, // The input object is where we'll put the ABI and the parameters
+    chainId,
+    value: tokenIn === zeroAddress ? amountIn : undefined,
+    to: AERODROME_ROUTER,
+    input: {
+      $or: [
+        {
+          // swapExactETHForTokens
+          $abi: ETH_FOR_TOKENS_FRAGMENTS,
+          amountOutMin: amountOut,
+          routes: {
+            $and: [
+              {$first: { from: '0x4200000000000000000000000000000000000006' }},
+              {$last: { to: tokenOut }},
+            ]
+          },
+          to: recipient,
+        }
+      ]
+    }, 
   })
 }
 
