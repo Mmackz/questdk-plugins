@@ -35,7 +35,33 @@ export const swap = async (
             ]
           },
           to: recipient,
-        }
+        },
+        {
+          // swapExactTokensForETH
+          $abi: TOKENS_FOR_ETH_FRAGMENTS,
+          amountIn: amountIn,
+          amountOutMin: amountOut,
+          routes: {
+            $and: [
+              {$first: { from: tokenIn }},
+              {$last: { to: '0x4200000000000000000000000000000000000006' }},
+            ]
+          },
+          to: recipient,
+        },
+        {
+          // swapExactTokensForTokens
+          $abi: TOKENS_FOR_TOKENS_FRAGMENTS,
+          amountIn: amountIn,
+          amountOutMin: amountOut,
+          routes: {
+            $and: [
+              {$first: { from: tokenIn }},
+              {$last: { to: tokenOut }},
+            ]
+          },
+          to: recipient,
+        },
       ]
     }, 
   })
