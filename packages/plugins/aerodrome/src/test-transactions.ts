@@ -86,7 +86,7 @@ export const failingTestCases = [
   createTestCase(SWAP_TEST_2, 'when tokenOut is not correct', {
     tokenOut: '0x6982508145454ce325ddbe47a25d4ec3d2311933',
   }),
-  createTestCase(SWAP_TEST_1, 'when amountIn is insufficient', {
+  createTestCase(SWAP_TEST_2, 'when amountIn is insufficient', {
     amountIn: GreaterThanOrEqual(parseEther('1000000000')),
   }),
 ]
